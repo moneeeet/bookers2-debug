@@ -13,10 +13,3 @@
  *= require_tree .
  *= require_self
  */
-.like-btn {
- color: #0000ff !important;
- }
-
-.unlike-btn {
- color: #e54747 !important;
- }
