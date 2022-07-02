@@ -1,17 +1,13 @@
 <td>
-          <% if book.favorited?(current_user) %>
-            <%= link_to book_favorites_path(book), method: :delete do %>
+        <% if book.favorited?(current_user) %>
+          <%= link_to book_favorites_path(book), method: :delete do %>
             <i class="far fa-heart like-btn " style="color: red;" ></i>
             <%= book.favorites.count %>
           <% end %>
-          <% else %>
-            <%= link_to book_favorites_path(book), method: :post do %>
-             <i class="fas fa-heart unlike-btn" ></i>
+        <% else %>
+          <%= link_to book_favorites_path(book), method: :post do %>
+            <i class="fas fa-heart unlike-btn" ></i>
             <%= book.favorites.count %>
           <% end %>
-          <% end %>
+        <% end %>
 
-          <% if book.user == current_user %>
-            <td><%= link_to 'Edit', edit_book_path(book), class: "btn btn-sm btn-success edit_book_#{book.id}" %></td>
-            <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{book.id}"%></td>
-          <% end %>
