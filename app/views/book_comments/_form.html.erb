@@ -1,6 +1,6 @@
 <div>
-  <%= form_with model: [book, book_comment] do |f| %>
-  <%= f.text_area :comment, size: "60x5", placeholder: "" %> </br>
+  <%= form_with model: [book, book_comment], local: false do |f| %>
+  <%= f.text_area :comment, size: "60x5", placeholder: "", id: "comment_area" %> </br>
   <%= f.submit "送信する" %>
   <% end %>
 </div>
