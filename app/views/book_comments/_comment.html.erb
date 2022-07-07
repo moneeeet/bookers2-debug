@@ -1,14 +1,21 @@
-<div>
-  <% book_comments.each do |book_comment| %>
-  <p><%= image_tag book_comment.user.get_profile_image(100,100) %></p>
-  <%= link_to user_path(book_comment.user.id) do %>
-  <%= book_comment.user.name %>
-  <% end %>
-  <%= book_comment.comment %>
-
-  <% if book_comment.user == current_user %>
-  <td><%= link_to 'Destroy', book_book_comment_path(book_comment.book.id, book_comment.id), method: :delete, remote: true, class: "btn btn-sm btn-danger destroy_book_#{book_comment.id}"%></td>
-  <% end %>
-  <% end %>
-</div>
+<table>
+  <tbody>
+    <% book_comments.each do |book_comment| %>
+    <tr>
+      <td>
+        <%= image_tag book_comment.user.get_profile_image(100,100) %>
+          <%= link_to user_path(book_comment.user.id) do %>
+          <%= book_comment.user.name %>
+        <% end %>
+      </td>
+      <td><%= book_comment.comment %></td>
+      <td>
+        <% if book_comment.user == current_user %>
+        <%= link_to 'Destroy', book_book_comment_path(book_comment.book.id, book_comment.id), method: :delete, remote: true, class: "btn btn-sm btn-danger destroy_book_#{book_comment.id}"%>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 

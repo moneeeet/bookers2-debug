@@ -23,25 +23,22 @@
           <%= render 'favorites/favorites', book: @book %>
         </td>
 
+        <td class= "comments-count">
+          <%= render 'book_comments/comment-count', book: @book %>
+        </td>
+
           <% if @book.user == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
             <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%></td>
           <% end %>
-
-          <td>コメント数：<%= @book.book_comments.count %></p>
         </tr>
-
       </table>
+
         <div id = "book_comments_<% @book_id %>">
           <%= render 'book_comments/comment', book_comments: @book.book_comments %>
         </div>
 
-
-
           <%= render 'book_comments/form', book: @book, book_comment: @book_comment %>
-
-
-
     </div>
   </div>
 </div>
